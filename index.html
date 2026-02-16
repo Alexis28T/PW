@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28-Talent | BOAT Recruitment Specialists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-purple: #600080;
+            --dark-purple: #411078;
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --gradient-1: linear-gradient(135deg, #600080 0%, #411078 100%);
+            --gradient-2: linear-gradient(135deg, #411078 0%, #000000 100%);
+            --gradient-3: linear-gradient(90deg, #600080 0%, #411078 50%, #000000 100%);
+            --gradient-glow: radial-gradient(circle at 50% 50%, rgba(96, 0, 128, 0.3), transparent 70%);
+        }
+
+        body {
+            font-family: 'DM Mono', monospace;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .bg-circle-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--deep-purple);
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .bg-circle-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--dark-purple);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: 5s;
+        }
+
+        .bg-circle-3 {
+            width: 500px;
+            height: 500px;
+            background: var(--deep-purple);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.9); }
+            75% { transform: translate(30px, 50px) scale(1.05); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(96, 0, 128, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Archivo', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 6rem 2rem 2rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(96, 0, 128, 0.2);
+            border: 1px solid var(--deep-purple);
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Archivo', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -3px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Archivo', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(96, 0, 128, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(96, 0, 128, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--deep-purple);
+        }
+
+        .btn-secondary:hover {
+            background: var(--deep-purple);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--deep-purple);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Archivo', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(96, 0, 128, 0.05);
+            border: 1px solid rgba(96, 0, 128, 0.2);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--deep-purple);
+            box-shadow: 0 20px 60px rgba(96, 0, 128, 0.3);
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Archivo', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .service-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--deep-purple);
+            font-weight: bold;
+        }
+
+        /* Job Board */
+        .job-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: rgba(96, 0, 128, 0.1);
+            border: 1px solid rgba(96, 0, 128, 0.3);
+            border-radius: 50px;
+            color: var(--white);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-1);
+            border-color: var(--deep-purple);
+            transform: translateY(-2px);
+        }
+
+        .jobs-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(96, 0, 128, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .job-card:hover {
+            border-color: var(--deep-purple);
+            background: rgba(96, 0, 128, 0.05);
+            transform: translateX(10px);
+        }
+
+        .job-info h3 {
+            font-family: 'Archivo', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            color: var(--deep-purple);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .job-meta-item strong {
+            color: var(--white);
+        }
+
+        .job-description {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .job-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(96, 0, 128, 0.2);
+            border: 1px solid rgba(96, 0, 128, 0.4);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .job-apply {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        .job-salary {
+            font-family: 'Archivo', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* CV Upload Section */
+        .cv-upload-section {
+            background: var(--gradient-1);
+            border-radius: 24px;
+            padding: 5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-upload-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cv-upload-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-upload-section h2 {
+            font-family: 'Archivo', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .cv-upload-section p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .upload-zone {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--white);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .upload-zone.drag-over {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-formats {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .upload-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(96, 0, 128, 0.05);
+            border: 1px solid rgba(96, 0, 128, 0.2);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--deep-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(96, 0, 128, 0.3);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-family: 'Archivo', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--deep-purple);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            border-top: 1px solid rgba(96, 0, 128, 0.3);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Archivo', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .job-card {
+                grid-template-columns: 1fr;
+            }
+
+            .job-apply {
+                align-items: flex-start;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .cv-upload-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-circle bg-circle-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">28-TALENT</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#jobs">Jobs</a></li>
+                <li><a href="#upload">Upload CV</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tag">BOAT RECRUITMENT SPECIALISTS</div>
+            <h1>Business Orchestration<br>& Automation<br>Technologies</h1>
+            <p class="hero-subtitle">Connecting elite tech talent with pioneering companies in AI, automation, and digital transformation</p>
+            <div class="hero-cta">
+                <a href="#jobs" class="btn btn-primary">View Opportunities</a>
+                <a href="#upload" class="btn btn-secondary">Submit Your CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header fade-in">
+            <div class="section-tag">Our Expertise</div>
+            <h2 class="section-title">BOAT Technology Domains</h2>
+            <p class="section-subtitle">We specialize in four critical areas of business orchestration and automation technologies</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">🤖</div>
+                <h3>AI & Machine Learning</h3>
+                <p>Pioneering the future with cutting-edge artificial intelligence and machine learning solutions that transform business operations.</p>
+                <ul class="service-features">
+                    <li>Machine Learning Engineers</li>
+                    <li>AI Research Scientists</li>
+                    <li>NLP Specialists</li>
+                    <li>Computer Vision Experts</li>
+                    <li>Deep Learning Architects</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">⚡</div>
+                <h3>Low-Code/No-Code Platforms</h3>
+                <p>Democratizing development through innovative platforms that empower rapid application delivery and digital transformation.</p>
+                <ul class="service-features">
+                    <li>Platform Developers</li>
+                    <li>Citizen Developer Enablers</li>
+                    <li>Solution Architects</li>
+                    <li>Implementation Consultants</li>
+                    <li>Platform Administrators</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">🔄</div>
+                <h3>Business Process Automation</h3>
+                <p>Streamlining operations through intelligent automation that drives efficiency, reduces costs, and enhances productivity.</p>
+                <ul class="service-features">
+                    <li>RPA Developers</li>
+                    <li>Process Automation Engineers</li>
+                    <li>Workflow Specialists</li>
+                    <li>BPM Consultants</li>
+                    <li>Automation Architects</li>
+                </ul>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-icon">🔗</div>
+                <h3>Integration & Orchestration</h3>
+                <p>Creating seamless connections between systems, applications, and data sources to build cohesive digital ecosystems.</p>
+                <ul class="service-features">
+                    <li>Integration Architects</li>
+                    <li>API Developers</li>
+                    <li>iPaaS Specialists</li>
+                    <li>Middleware Engineers</li>
+                    <li>Cloud Integration Experts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Board Section -->
+    <section id="jobs">
+        <div class="section-header fade-in">
+            <div class="section-tag">Current Openings</div>
+            <h2 class="section-title">Job Bulletin Board</h2>
+            <p class="section-subtitle">Explore exciting opportunities in BOAT technologies with leading organizations</p>
+        </div>
+
+        <div class="job-filters fade-in">
+            <button class="filter-btn active" data-filter="all">All Positions</button>
+            <button class="filter-btn" data-filter="ai">AI & ML</button>
+            <button class="filter-btn" data-filter="lowcode">Low-Code</button>
+            <button class="filter-btn" data-filter="automation">Automation</button>
+            <button class="filter-btn" data-filter="integration">Integration</button>
+        </div>
+
+        <div class="jobs-grid">
+            <div class="job-card fade-in" data-category="ai">
+                <div class="job-info">
+                    <h3>Senior Machine Learning Engineer</h3>
+                    <div class="job-company">TechVision AI</div>
+                    <div class="job-meta">
+                        <div class="job-meta-item">📍 London, UK (Hybrid)</div>
+                        <div class="job-meta-item">⏱️ Full-time</div>
+                        <div class="job-meta-item">📅 Posted 2 days ago</div>
+                    </div>
+                    <p class="job-description">
+                        Leading AI company seeking an experienced ML Engineer to develop and deploy production-ready machine learning models. Work on cutting-edge projects involving NLP, computer vision, and predictive analytics.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">Python</span>
+                        <span class="job-tag">TensorFlow</span>
+                        <span class="job-tag">PyTorch</span>
+                        <span class="job-tag">AWS</span>
+                        <span class="job-tag">MLOps</span>
+                    </div>
+                </div>
+                <div class="job-apply">
+                    <div class="job-salary">£85k - £110k</div>
+                    <a href="#upload" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card fade-in" data-category="lowcode">
+                <div class="job-info">
+                    <h3>Low-Code Platform Architect</h3>
+                    <div class="job-company">Digital Transform Ltd</div>
+                    <div class="job-meta">
+                        <div class="job-meta-item">📍 Manchester, UK (Remote)</div>
+                        <div class="job-meta-item">⏱️ Full-time</div>
+                        <div class="job-meta-item">📅 Posted 5 days ago</div>
+                    </div>
+                    <p class="job-description">
+                        Design and implement enterprise-scale low-code solutions using leading platforms. Guide development teams and establish best practices for rapid application development.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">OutSystems</span>
+                        <span class="job-tag">Mendix</span>
+                        <span class="job-tag">PowerApps</span>
+                        <span class="job-tag">Architecture</span>
+                        <span class="job-tag">Agile</span>
+                    </div>
+                </div>
+                <div class="job-apply">
+                    <div class="job-salary">£75k - £95k</div>
+                    <a href="#upload" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card fade-in" data-category="automation">
+                <div class="job-info">
+                    <h3>RPA Lead Developer</h3>
+                    <div class="job-company">AutomateNow Solutions</div>
+                    <div class="job-meta">
+                        <div class="job-meta-item">📍 Birmingham, UK (Hybrid)</div>
+                        <div class="job-meta-item">⏱️ Contract (6 months)</div>
+                        <div class="job-meta-item">📅 Posted 1 week ago</div>
+                    </div>
+                    <p class="job-description">
+                        Lead the development of robotic process automation solutions to streamline business operations. Mentor junior developers and drive automation strategy across multiple departments.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">UiPath</span>
+                        <span class="job-tag">Blue Prism</span>
+                        <span class="job-tag">Automation Anywhere</span>
+                        <span class="job-tag">Process Mining</span>
+                        <span class="job-tag">Leadership</span>
+                    </div>
+                </div>
+                <div class="job-apply">
+                    <div class="job-salary">£600 - £750/day</div>
+                    <a href="#upload" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card fade-in" data-category="integration">
+                <div class="job-info">
+                    <h3>Enterprise Integration Specialist</h3>
+                    <div class="job-company">CloudConnect Systems</div>
+                    <div class="job-meta">
+                        <div class="job-meta-item">📍 Edinburgh, UK (Hybrid)</div>
+                        <div class="job-meta-item">⏱️ Full-time</div>
+                        <div class="job-meta-item">📅 Posted 3 days ago</div>
+                    </div>
+                    <p class="job-description">
+                        Build and maintain complex integration solutions connecting cloud and on-premise systems. Design APIs and orchestrate data flows across enterprise applications.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">MuleSoft</span>
+                        <span class="job-tag">API Gateway</span>
+                        <span class="job-tag">Microservices</span>
+                        <span class="job-tag">Azure</span>
+                        <span class="job-tag">REST/SOAP</span>
+                    </div>
+                </div>
+                <div class="job-apply">
+                    <div class="job-salary">£70k - £90k</div>
+                    <a href="#upload" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card fade-in" data-category="ai">
+                <div class="job-info">
+                    <h3>AI Solutions Consultant</h3>
+                    <div class="job-company">Intelligent Systems Group</div>
+                    <div class="job-meta">
+                        <div class="job-meta-item">📍 Leeds, UK (Hybrid)</div>
+                        <div class="job-meta-item">⏱️ Full-time</div>
+                        <div class="job-meta-item">📅 Posted 4 days ago</div>
+                    </div>
+                    <p class="job-description">
+                        Work with clients to identify AI opportunities and implement intelligent automation solutions. Bridge the gap between business needs and technical AI capabilities.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">Consulting</span>
+                        <span class="job-tag">AI Strategy</span>
+                        <span class="job-tag">Client Facing</span>
+                        <span class="job-tag">Solution Design</span>
+                        <span class="job-tag">Stakeholder Mgmt</span>
+                    </div>
+                </div>
+                <div class="job-apply">
+                    <div class="job-salary">£65k - £85k</div>
+                    <a href="#upload" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Upload Section -->
+    <section id="upload">
+        <div class="cv-upload-section fade-in">
+            <div class="cv-upload-content">
+                <h2>Launch Your BOAT Career</h2>
+                <p>Upload your CV and connect with leading companies in business orchestration and automation</p>
+                
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">📄</div>
+                    <div class="upload-text">Drag & drop your CV here</div>
+                    <div class="upload-formats">or click to browse (PDF, DOC, DOCX - Max 5MB)</div>
+                    <input type="file" id="fileInput" accept=".pdf,.doc,.docx" style="display: none;">
+                </div>
+
+                <div class="upload-options">
+                    <a href="mailto:Peter@28-talent.com?subject=CV Submission" class="btn btn-secondary">Email Your CV</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us First</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header fade-in">
+            <div class="section-tag">Get In Touch</div>
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Ready to take the next step? Connect with our BOAT recruitment specialists</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card fade-in">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <a href="mailto:Peter@28-talent.com">Peter@28-talent.com</a>
+            </div>
+
+            <div class="contact-card fade-in">
+                <div class="contact-icon">📞</div>
+                <h3>Phone</h3>
+                <a href="tel:+447702881560">+44 7702 881560</a>
+            </div>
+
+            <div class="contact-card fade-in">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <a href="https://linkedin.com/company/28-talent" target="_blank">Connect with us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">28-TALENT</div>
+            <p class="footer-text">© 2026 28-Talent. BOAT Recruitment Specialists. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Job filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const jobCards = document.querySelectorAll('.job-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                jobCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'grid';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateX(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateX(-20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // File upload functionality
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('drag-over');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('drag-over');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('drag-over');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+
+            if (!validTypes.includes(file.type)) {
+                alert('Please upload a PDF, DOC, or DOCX file.');
+                return;
+            }
+
+            if (file.size > maxSize) {
+                alert('File size must be less than 5MB.');
+                return;
+            }
+
+            // Simulate upload
+            uploadZone.innerHTML = `
+                <div class="upload-icon">✅</div>
+                <div class="upload-text">${file.name}</div>
+                <div class="upload-formats">File uploaded successfully! We'll be in touch soon.</div>
+            `;
+
+            setTimeout(() => {
+                uploadZone.innerHTML = `
+                    <div class="upload-icon">📄</div>
+                    <div class="upload-text">Drag & drop your CV here</div>
+                    <div class="upload-formats">or click to browse (PDF, DOC, DOCX - Max 5MB)</div>
+                `;
+            }, 3000);
+        }
+
+        // Add parallax effect to background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const circles = document.querySelectorAll('.bg-circle');
+            circles.forEach((circle, index) => {
+                const speed = 0.5 + (index * 0.1);
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>
