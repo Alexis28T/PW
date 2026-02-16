@@ -1,3 +1,5 @@
+index.HTML {CMS HTML code for job bulliten} 
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         * {
             margin: 0;
@@ -437,6 +440,16 @@
             grid-template-columns: 1fr auto;
             gap: 2rem;
             align-items: start;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .job-card:hover {
@@ -515,6 +528,25 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .loading-message {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.2rem;
+        }
+
+        .no-jobs-message {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .no-jobs-message h3 {
+            font-family: 'Archivo', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         /* CV Upload Section */
@@ -841,136 +873,8 @@
             <button class="filter-btn" data-filter="integration">Integration</button>
         </div>
 
-        <div class="jobs-grid">
-            <div class="job-card fade-in" data-category="ai">
-                <div class="job-info">
-                    <h3>Senior Machine Learning Engineer</h3>
-                    <div class="job-company">TechVision AI</div>
-                    <div class="job-meta">
-                        <div class="job-meta-item">📍 London, UK (Hybrid)</div>
-                        <div class="job-meta-item">⏱️ Full-time</div>
-                        <div class="job-meta-item">📅 Posted 2 days ago</div>
-                    </div>
-                    <p class="job-description">
-                        Leading AI company seeking an experienced ML Engineer to develop and deploy production-ready machine learning models. Work on cutting-edge projects involving NLP, computer vision, and predictive analytics.
-                    </p>
-                    <div class="job-tags">
-                        <span class="job-tag">Python</span>
-                        <span class="job-tag">TensorFlow</span>
-                        <span class="job-tag">PyTorch</span>
-                        <span class="job-tag">AWS</span>
-                        <span class="job-tag">MLOps</span>
-                    </div>
-                </div>
-                <div class="job-apply">
-                    <div class="job-salary">£85k - £110k</div>
-                    <a href="#upload" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-
-            <div class="job-card fade-in" data-category="lowcode">
-                <div class="job-info">
-                    <h3>Low-Code Platform Architect</h3>
-                    <div class="job-company">Digital Transform Ltd</div>
-                    <div class="job-meta">
-                        <div class="job-meta-item">📍 Manchester, UK (Remote)</div>
-                        <div class="job-meta-item">⏱️ Full-time</div>
-                        <div class="job-meta-item">📅 Posted 5 days ago</div>
-                    </div>
-                    <p class="job-description">
-                        Design and implement enterprise-scale low-code solutions using leading platforms. Guide development teams and establish best practices for rapid application development.
-                    </p>
-                    <div class="job-tags">
-                        <span class="job-tag">OutSystems</span>
-                        <span class="job-tag">Mendix</span>
-                        <span class="job-tag">PowerApps</span>
-                        <span class="job-tag">Architecture</span>
-                        <span class="job-tag">Agile</span>
-                    </div>
-                </div>
-                <div class="job-apply">
-                    <div class="job-salary">£75k - £95k</div>
-                    <a href="#upload" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-
-            <div class="job-card fade-in" data-category="automation">
-                <div class="job-info">
-                    <h3>RPA Lead Developer</h3>
-                    <div class="job-company">AutomateNow Solutions</div>
-                    <div class="job-meta">
-                        <div class="job-meta-item">📍 Birmingham, UK (Hybrid)</div>
-                        <div class="job-meta-item">⏱️ Contract (6 months)</div>
-                        <div class="job-meta-item">📅 Posted 1 week ago</div>
-                    </div>
-                    <p class="job-description">
-                        Lead the development of robotic process automation solutions to streamline business operations. Mentor junior developers and drive automation strategy across multiple departments.
-                    </p>
-                    <div class="job-tags">
-                        <span class="job-tag">UiPath</span>
-                        <span class="job-tag">Blue Prism</span>
-                        <span class="job-tag">Automation Anywhere</span>
-                        <span class="job-tag">Process Mining</span>
-                        <span class="job-tag">Leadership</span>
-                    </div>
-                </div>
-                <div class="job-apply">
-                    <div class="job-salary">£600 - £750/day</div>
-                    <a href="#upload" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-
-            <div class="job-card fade-in" data-category="integration">
-                <div class="job-info">
-                    <h3>Enterprise Integration Specialist</h3>
-                    <div class="job-company">CloudConnect Systems</div>
-                    <div class="job-meta">
-                        <div class="job-meta-item">📍 Edinburgh, UK (Hybrid)</div>
-                        <div class="job-meta-item">⏱️ Full-time</div>
-                        <div class="job-meta-item">📅 Posted 3 days ago</div>
-                    </div>
-                    <p class="job-description">
-                        Build and maintain complex integration solutions connecting cloud and on-premise systems. Design APIs and orchestrate data flows across enterprise applications.
-                    </p>
-                    <div class="job-tags">
-                        <span class="job-tag">MuleSoft</span>
-                        <span class="job-tag">API Gateway</span>
-                        <span class="job-tag">Microservices</span>
-                        <span class="job-tag">Azure</span>
-                        <span class="job-tag">REST/SOAP</span>
-                    </div>
-                </div>
-                <div class="job-apply">
-                    <div class="job-salary">£70k - £90k</div>
-                    <a href="#upload" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-
-            <div class="job-card fade-in" data-category="ai">
-                <div class="job-info">
-                    <h3>AI Solutions Consultant</h3>
-                    <div class="job-company">Intelligent Systems Group</div>
-                    <div class="job-meta">
-                        <div class="job-meta-item">📍 Leeds, UK (Hybrid)</div>
-                        <div class="job-meta-item">⏱️ Full-time</div>
-                        <div class="job-meta-item">📅 Posted 4 days ago</div>
-                    </div>
-                    <p class="job-description">
-                        Work with clients to identify AI opportunities and implement intelligent automation solutions. Bridge the gap between business needs and technical AI capabilities.
-                    </p>
-                    <div class="job-tags">
-                        <span class="job-tag">Consulting</span>
-                        <span class="job-tag">AI Strategy</span>
-                        <span class="job-tag">Client Facing</span>
-                        <span class="job-tag">Solution Design</span>
-                        <span class="job-tag">Stakeholder Mgmt</span>
-                    </div>
-                </div>
-                <div class="job-apply">
-                    <div class="job-salary">£65k - £85k</div>
-                    <a href="#upload" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
+        <div id="jobs-container">
+            <div class="loading-message">Loading available positions...</div>
         </div>
     </section>
 
@@ -1034,6 +938,231 @@
     </footer>
 
     <script>
+        // Load jobs from Netlify CMS
+        async function loadJobs() {
+            const jobsContainer = document.getElementById('jobs-container');
+            
+            try {
+                // Fetch all job markdown files from the content/jobs directory
+                const response = await fetch('/content/jobs/');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load jobs');
+                }
+                
+                const text = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const links = Array.from(doc.querySelectorAll('a'))
+                    .map(a => a.getAttribute('href'))
+                    .filter(href => href && href.endsWith('.md'));
+                
+                if (links.length === 0) {
+                    showNoJobs();
+                    return;
+                }
+                
+                // Fetch and parse each job file
+                const jobPromises = links.map(async (link) => {
+                    const jobResponse = await fetch(`/content/jobs/${link}`);
+                    const jobText = await jobResponse.text();
+                    return parseJobMarkdown(jobText, link);
+                });
+                
+                const jobs = await Promise.all(jobPromises);
+                const activeJobs = jobs.filter(job => job && job.active);
+                
+                if (activeJobs.length === 0) {
+                    showNoJobs();
+                    return;
+                }
+                
+                displayJobs(activeJobs);
+            } catch (error) {
+                console.error('Error loading jobs:', error);
+                showNoJobs();
+            }
+        }
+        
+        function parseJobMarkdown(markdown, filename) {
+            try {
+                // Extract frontmatter
+                const frontmatterMatch = markdown.match(/^---\n([\s\S]*?)\n---/);
+                if (!frontmatterMatch) return null;
+                
+                const frontmatter = frontmatterMatch[1];
+                const job = {};
+                
+                // Parse YAML-like frontmatter
+                const lines = frontmatter.split('\n');
+                let currentKey = null;
+                let currentList = [];
+                
+                lines.forEach(line => {
+                    const keyMatch = line.match(/^(\w+):\s*(.*)$/);
+                    if (keyMatch) {
+                        // Save previous list if exists
+                        if (currentKey && currentList.length > 0) {
+                            job[currentKey] = currentList;
+                            currentList = [];
+                        }
+                        
+                        currentKey = keyMatch[1];
+                        const value = keyMatch[2].trim();
+                        
+                        if (value === '') {
+                            // This is a list start
+                            currentList = [];
+                        } else if (value.startsWith('"') || value.startsWith("'")) {
+                            // String value
+                            job[currentKey] = value.replace(/^["']|["']$/g, '');
+                        } else if (value === 'true' || value === 'false') {
+                            // Boolean value
+                            job[currentKey] = value === 'true';
+                        } else {
+                            // Other value
+                            job[currentKey] = value;
+                        }
+                    } else if (line.trim().startsWith('-')) {
+                        // List item
+                        currentList.push(line.trim().substring(1).trim());
+                    }
+                });
+                
+                // Save last list if exists
+                if (currentKey && currentList.length > 0) {
+                    job[currentKey] = currentList;
+                }
+                
+                // Calculate relative date
+                if (job.date) {
+                    const jobDate = new Date(job.date);
+                    const now = new Date();
+                    const diffTime = Math.abs(now - jobDate);
+                    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    if (diffDays === 0) {
+                        job.postedRelative = 'Posted today';
+                    } else if (diffDays === 1) {
+                        job.postedRelative = 'Posted yesterday';
+                    } else if (diffDays < 7) {
+                        job.postedRelative = `Posted ${diffDays} days ago`;
+                    } else if (diffDays < 14) {
+                        job.postedRelative = 'Posted 1 week ago';
+                    } else if (diffDays < 30) {
+                        job.postedRelative = `Posted ${Math.floor(diffDays / 7)} weeks ago`;
+                    } else {
+                        job.postedRelative = `Posted ${Math.floor(diffDays / 30)} months ago`;
+                    }
+                }
+                
+                return job;
+            } catch (error) {
+                console.error('Error parsing job:', error);
+                return null;
+            }
+        }
+        
+        function displayJobs(jobs) {
+            const jobsContainer = document.getElementById('jobs-container');
+            
+            // Sort jobs by date (newest first)
+            jobs.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            const jobsGrid = document.createElement('div');
+            jobsGrid.className = 'jobs-grid';
+            
+            jobs.forEach((job, index) => {
+                const jobCard = createJobCard(job, index);
+                jobsGrid.appendChild(jobCard);
+            });
+            
+            jobsContainer.innerHTML = '';
+            jobsContainer.appendChild(jobsGrid);
+            
+            // Set up filter functionality
+            setupFilters();
+        }
+        
+        function createJobCard(job, index) {
+            const card = document.createElement('div');
+            card.className = 'job-card';
+            card.setAttribute('data-category', job.category || 'all');
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            const tagsHTML = job.tags && Array.isArray(job.tags) 
+                ? job.tags.map(tag => `<span class="job-tag">${tag}</span>`).join('')
+                : '';
+            
+            card.innerHTML = `
+                <div class="job-info">
+                    <h3>${job.title || 'Untitled Position'}</h3>
+                    <div class="job-company">${job.company || 'Company Name'}</div>
+                    <div class="job-meta">
+                        <div class="job-meta-item">📍 ${job.location || 'Location TBD'}</div>
+                        <div class="job-meta-item">⏱️ ${job.employment_type || 'Full-time'}</div>
+                        <div class="job-meta-item">📅 ${job.postedRelative || 'Recently posted'}</div>
+                    </div>
+                    <p class="job-description">
+                        ${job.description || 'Job description coming soon.'}
+                    </p>
+                    <div class="job-tags">
+                        ${tagsHTML}
+                    </div>
+                </div>
+                <div class="job-apply">
+                    <div class="job-salary">${job.salary || 'Competitive'}</div>
+                    <a href="#upload" class="btn btn-primary">Apply Now</a>
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        function showNoJobs() {
+            const jobsContainer = document.getElementById('jobs-container');
+            jobsContainer.innerHTML = `
+                <div class="no-jobs-message">
+                    <h3>No active positions at the moment</h3>
+                    <p>Check back soon or submit your CV to be considered for future opportunities.</p>
+                    <a href="#upload" class="btn btn-primary" style="margin-top: 2rem; display: inline-block;">Submit Your CV</a>
+                </div>
+            `;
+        }
+        
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const jobCards = document.querySelectorAll('.job-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    jobCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'grid';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateX(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateX(-20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Load jobs when page loads
+        document.addEventListener('DOMContentLoaded', loadJobs);
+        
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1060,35 +1189,6 @@
         }, observerOptions);
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Job filter functionality
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const jobCards = document.querySelectorAll('.job-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter');
-                
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                jobCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'grid';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateX(0)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateX(-20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
 
         // File upload functionality
         const uploadZone = document.getElementById('uploadZone');
@@ -1155,4 +1255,24 @@
 
         // Add parallax effect to background
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageY
+            const scrolled = window.pageYOffset;
+            const circles = document.querySelectorAll('.bg-circle');
+            circles.forEach((circle, index) => {
+                const speed = 0.5 + (index * 0.1);
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>
